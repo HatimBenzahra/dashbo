@@ -1,0 +1,49 @@
+/* src/index.css */
+@import "tailwindcss";
+@layer base {
+  /* Dans :root { ... } de src/index.css */
+
+:root {
+  /* Fond de la page (gris très clair, comme dans la maquette) */
+  --background: 220 14% 96%; /* #f5f5f7 */
+  /* Texte principal (noir) */
+  --foreground: 222.2 84% 4.9%;
+
+  /* Cartes et Sidebar (blanc pur) */
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+
+  /* ... (les autres variables peuvent rester les mêmes pour l'instant) ... */
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 215.4 16.3% 46.9%;
+
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 215.4 16.3% 46.9%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  /* Bordure des cartes (le gris très clair #EFEDED que vous vouliez) */
+  --border: 0 0% 93.7%; /* #EFEDED */
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+
+  --radius: 0.5rem;
+
+  /* Couleurs des graphiques (déjà correctes) */
+  --chart-1: 232 59% 71%;
+  --chart-2: 332 59% 71%;
+  --chart-3: 272 59% 71%;
+  --chart-4: 0 0% 13%;
+  --chart-5: 210 40% 98%;
+}
+}
