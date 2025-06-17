@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "@prisma/client": "^6.9.0",
     "react-map-gl": "^8.0.4"
+  },
+  "devDependencies": {
+    "prisma": "^6.9.0"
   }
 }

@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  firstName    String
+  lastName     String
+  age          Int?
+  phone        String?
+  role         UserRole @default(COMMERCIAL)
+  
+  team         Team?    @relation("TeamMembers", fields: [teamId], references: [id])
+  teamId       Int?
+  
+  managedTeams Team[]   @relation("TeamManager")
+
+  prospectingHistory ProspectingHistory[]
+  liveStatus         LiveStatus?
+
+  dateInscription DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Team {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  
+  manager   User     @relation("TeamManager", fields: [managerId], references: [id])
+  managerId Int
+
+  members   User[]   @relation("TeamMembers")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProspectingHistory {
+  id            Int      @id @default(autoincrement())
+  date          DateTime
+  zone          String
+  portesTappees Int
+  rdvPris       Int
+  contratsSignes Int
+  
+  commercial    User     @relation(fields: [commercialId], references: [id])
+  commercialId  Int
+}
+
+model LiveStatus {
+  id            Int      @id @default(autoincrement())
+  user          User     @relation(fields: [userId], references: [id])
+  userId        Int      @unique
+  latitude      Float
+  longitude     Float
+  isProspecting Boolean  @default(false)
+  lastUpdate    DateTime @updatedAt
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  ADMIN
+  DIRECTOR
+  MANAGER
+  BACK_OFFICE
+  COMMERCIAL
+}
