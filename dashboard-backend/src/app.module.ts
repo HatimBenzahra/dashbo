@@ -1,12 +1,14 @@
 // src/app.module.ts
 
 import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './1-presentation/auth/auth.module';
 import { DatabaseModule } from './4-infrastructure/database/database.module';
 import { LoggerMiddleware } from './logger.middleware'; // <--- 1. IMPORTER L'ESPION
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     DatabaseModule,
     AuthModule,
   ],
