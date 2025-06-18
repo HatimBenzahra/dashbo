@@ -31,6 +31,11 @@
 $ npm install
 ```
 
+Create a `.env` file in `dashboard-backend` based on `.env.example` and set the required variables:
+
+- `JWT_SECRET` – secret key used to sign JWT tokens
+- `DATABASE_URL` – connection string for your PostgreSQL database
+
 ## Compile and run the project
 
 ```bash
